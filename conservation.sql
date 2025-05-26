@@ -128,7 +128,7 @@ WHERE location ILIKE ('%Pass%')
 SELECT name , count(ranger_id) as total_sightings  FROM rangers
 JOIN sightings USING(ranger_id)
 GROUP BY (ranger_id,name) 
-ORDER BY (name)
+ORDER BY name
 
 --Problem 5
 
@@ -139,8 +139,8 @@ WHERE sightings.species_id IS NULL
 
 --Problem 6
 
-SELECT common_name,sighting_time,name FROM species
-JOIN sightings USING(species_id)
+SELECT common_name,sighting_time,name FROM sightings
+JOIN species USING(species_id)
 JOIN rangers USING (ranger_id)
 ORDER BY(sighting_time) DESC
 LIMIT 2
